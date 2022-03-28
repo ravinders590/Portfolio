@@ -26,7 +26,7 @@ const Maincontent = () => {
                 <h3 className="subtitle">Introduction</h3>
                 <h2 className="title">Frontend Developer</h2>
                 <p className="desc">
-                Hello! I’m Ravinder singh. Senior Web Developer with over 3.5 years of experience specializing in frontend development. Experienced with all stages of the development cycle for dynamic web projects.Having an in-depth knowledge including advanced HTML5, CSS3, Bootstrap, JavaScript ES6, JQuery and React js. As well as also knowledge in Backend Technologies like Core PHP and use rest api.  
+                Hello! I’m Ravinder singh. Frontend Developer with over 4 years of experience specializing in frontend development. Experienced with all stages of the development cycle for dynamic web projects.Having an in-depth knowledge including advanced HTML5, CSS3, Bootstrap, JavaScript ES6, JQuery and React js. As well as also knowledge in Backend Technologies like Core PHP and use rest api.  
                 </p>
                 <img src="./signature.png" alt="Signature" />
             </section>
