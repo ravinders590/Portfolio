@@ -467,7 +467,6 @@ table.userdata tbody > tr > td a {
     display: block;
     border-radius: 1px;
     background-color: transparent;
-    border: 1px solid rgba(255,255,255,.2);
     color: #ccc;
     font-size: 16px;
     outline: none;
@@ -498,9 +497,8 @@ table.userdata tbody > tr > td a {
     line-height: 1.5;
     padding: 16px 20px!important;
     width: 100%;
-    border: 1px solid rgba(255,255,255,.2);
     transition: all .3s ease;
-    height: 200px;
+    height: 200px !important;
     border-color: rgba(0,0,0,.2);
     color: #333;
 }
@@ -731,6 +729,26 @@ a.MuiTypography-root svg {
 .social-icon a:last-child {
     color: #171515;
 }
+.contact form .MuiFormControl-root{
+    width: 100%;
+}
+.contact form .MuiFormControl-root .MuiOutlinedInput-root {
+    padding: 0;
+}
+.css-1in441m>span,.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root,.css-1in441m {
+    background-color: #fff;
+}
+.contact form .items_wrap .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused,
+.css-u9osun.Mui-focused {
+    color:var(--mc) !important;
+}
+.contact .items_wrap textarea:focus ~ fieldset,
+.contact .items_wrap input[type="text"]:focus ~ fieldset,
+.contact .items_wrap input[type="email"]:focus ~ fieldset,
+.contact .items_wrap input[type="tel"]:focus ~ fieldset{
+    border-color: var(--mc);
+}
+
 @media (max-width:767px) {
     .main-wrapper {
         display: flex;
@@ -876,7 +894,7 @@ a.MuiTypography-root svg {
     }
     
     .contact .items_wrap textarea {
-        height: 100px;
+        height: 100px !important;
     }
     .contact input[type="submit"] {
         padding: 24px;

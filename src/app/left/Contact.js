@@ -1,5 +1,7 @@
 import React,{useState,useRef} from 'react';
 import emailjs from 'emailjs-com';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 
 const Contact = () => {
@@ -10,6 +12,7 @@ const Contact = () => {
     const USER_ID='ztWuqA8bCnjpLwbfP';
     
     const [errorMsg, setErrormsg] = useState();
+    const [success,setSuccess] = useState('');
     const [buttonAttr, setSubmitData] = useState('Send Message');
     const [userregister, setuser] = useState({
         fullname:'',
@@ -27,12 +30,13 @@ const Contact = () => {
     
     const sendEmail = (e) => {
         e.preventDefault();
+        
         if(userregister.fullname !=='' && userregister.email !=='' && userregister.mobile !=='' && userregister.message !==''){
             setSubmitData('Loading...');
             document.querySelector('#send_message').setAttribute('disabled','disabled');
             emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, USER_ID)
             .then((result) => {
-                console.log(result.text);
+                // console.log(result.text);
                 if(result.text === 'OK'){
                     setSubmitData('Send Message');
                     setuser({
@@ -41,7 +45,10 @@ const Contact = () => {
                         mobile:'',
                         message:''
                     });
+                    
+                    setSuccess(<span className='success'>Thank you {userregister.fullname}! we will contact you soon. </span>)
                 document.querySelector('#send_message').removeAttribute('disabled');
+
             }
 
            }, (error) => {
@@ -64,35 +71,31 @@ const Contact = () => {
         <h3 className="subtitle">Contact</h3>
         <h2 className="title">Get In Touch</h2>
         <p className="desc">If you have any suggestion, project or even you want to say “hello”, please fill out the form below and I will reply you shortly.</p>
-        <form method='post' ref={form} onSubmit={sendEmail} autoComplete="off">
+        <Box component="form" noValidate autoComplete="off" ref={form} onSubmit={sendEmail}>        
+            {success}
         <div className="items_wrap">
             <div className="items">
                 <div className="item half">
-                    <div className="input_wrapper ">
-                        <input type="text" className='focuselement' name="fullname" id="name" value={userregister.fullName} onChange={handleInput} autoComplete="false" />
-                        <span className="moving_placeholder">Name *</span>
-                        
+                    <div className='items_wrap'>
+                        <TextField id="outlined-basic" label="Name*" name="fullname" value={userregister.fullname} onChange={handleInput} variant="outlined" />
                     </div>
-                    {errorMsg}
+                    {errorMsg}                
                 </div>
                 <div className="item half">
-                    <div className="input_wrapper ">
-                        <input type="email" className='focuselement' value={userregister.email} name="email" id="email" onChange={handleInput} autoComplete="false" />
-                        <span className="moving_placeholder">Email *</span>
+                    <div className='items_wrap'>
+                        <TextField id="outlined-basic" label="Email*" name="email" value={userregister.email} onChange={handleInput} variant="outlined" />
                     </div>
                     {errorMsg}
                 </div>
                 <div className="item">
-                    <div className="input_wrapper ">
-                        <input type="text" id="phone" className='focuselement' value={userregister.mobile} name="mobile" onChange={handleInput}  autoComplete="false"/>
-                        <span className="moving_placeholder">Phone</span>
+                    <div className='items_wrap'>
+                        <TextField id="outlined-basic" label="Phone*" name="mobile" value={userregister.mobile} onChange={handleInput} variant="outlined" />
                     </div>
                     {errorMsg}
                 </div>
                 <div className="item">
-                    <div className="input_wrapper ">
-                        <textarea name="message" id="message" value={userregister.message} onChange={handleInput} className='focuselement' autoComplete="false"></textarea>
-                        <span className="moving_placeholder">Message</span>
+                    <div className='items_wrap'>
+                        <TextField id="outlined-basic" label="Message*" multiline          maxRows={10} name="message" value={userregister.message} onChange={handleInput} variant="outlined" />
                     </div>
                     {errorMsg}
                 </div>
@@ -103,7 +106,7 @@ const Contact = () => {
                 </div>
             </div>
         </div>
-        </form>
+        </Box>
     </section>
     </>
   )
